@@ -20,7 +20,7 @@ import org.scribe.model.SignatureType;
 
 /**
  *
- * @author mchaberski
+ * @author Mike Chaberski
  */
 public class GoogleAppsDomainApi20Test {
     

@@ -11,8 +11,9 @@ import org.scribe.model.SignatureType;
 import org.scribe.oauth.ProxyOAuth20ServiceImpl;
 
 /**
- *
- * @author mchaberski
+ * 
+ * @author Mike Chaberski
+ * @author Jerome Leleu
  */
 public class GoogleAppsDomainClient extends Google2Client {
 

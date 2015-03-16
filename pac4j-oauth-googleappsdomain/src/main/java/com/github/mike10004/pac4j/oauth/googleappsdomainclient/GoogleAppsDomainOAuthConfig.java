@@ -11,7 +11,7 @@ import org.scribe.model.SignatureType;
 
 /**
  *
- * @author mchaberski
+ * @author Mike Chaberski
  */
 public class GoogleAppsDomainOAuthConfig extends OAuthConfig {
 

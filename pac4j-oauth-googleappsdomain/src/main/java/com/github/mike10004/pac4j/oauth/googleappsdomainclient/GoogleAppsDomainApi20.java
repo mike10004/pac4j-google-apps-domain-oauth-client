@@ -11,7 +11,8 @@ import org.scribe.utils.OAuthEncoder;
 
 /**
  *
- * @author mchaberski
+ * @author Mike Chaberski
+ * @author Jerome Leleu
  */
 public class GoogleAppsDomainApi20 extends GoogleApi20 {
 
