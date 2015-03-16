@@ -84,7 +84,7 @@ properties:
 * my-app.shiro.google.remoteRedirectUri
 * shiro.main.ssl.enabled
 
-Normal builds will use http://localhost:8080/my-app/callback as the callback 
+Development builds will use http://localhost:8080/my-app/callback as the callback 
 URL, and builds where the `remote-deployable` profile is activated will use
 the value of `${my-app.shiro.google.remoteRedirectUri}` defined in your user
 settings.
