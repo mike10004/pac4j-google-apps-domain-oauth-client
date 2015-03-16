@@ -1,5 +1,7 @@
 /*
- * (c) 2015 IBG, A Novetta Solutions Company.
+ * (c) 2015 Mike Chaberski
+ * 
+ * Distributed under Apache License 2.0
  */
 package com.github.mike10004.pac4j.oauth.googleappsdomainclient;
 

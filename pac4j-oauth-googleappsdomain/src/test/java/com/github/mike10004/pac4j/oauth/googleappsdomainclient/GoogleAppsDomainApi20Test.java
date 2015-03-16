@@ -1,5 +1,7 @@
 /*
- * (c) 2015 IBG, A Novetta Solutions Company.
+ * (c) 2015 Mike Chaberski
+ * 
+ * Distributed under Apache License 2.0
  */
 package com.github.mike10004.pac4j.oauth.googleappsdomainclient;
 
@@ -8,9 +10,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import java.io.OutputStream;
 import java.net.URI;
-import java.net.URL;
 import java.util.List;
-import java.util.Random;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.junit.Test;
