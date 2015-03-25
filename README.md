@@ -4,6 +4,8 @@ Apps domain.
 
 ## How to use with Shiro
 
+### shiro.ini
+
 Contents of `src/main/resources/shiro.ini`:
 
     [main] 
@@ -39,6 +41,8 @@ Contents of `src/main/resources/shiro.ini`:
     /logout = ssl, logout
     /** = ssl, googleRoles[ROLE_USER]
 
+### Project pom.xml    
+    
 In your project `pom.xml`, include the following:
 
     <properties>
@@ -75,6 +79,8 @@ In your project `pom.xml`, include the following:
         ...
     </resources>
 
+### Maven user settings
+    
 In your Maven user settings (`$HOME/.m2/settings.xml`), define the following
 properties:
 
@@ -82,9 +88,40 @@ properties:
 * my-app.shiro.google.client.id
 * my-app.shiro.google.client.secret
 * my-app.shiro.google.remoteRedirectUri
-* shiro.main.ssl.enabled
 
-Development builds will use http://localhost:8080/my-app/callback as the callback 
+Visit https://console.developers.google.com to get your client ID and client
+secret and to set the permitted redirect URI. 
+
+These properties must be set in a profile that is activated by default. A good
+way to activate a profile default is described in [an answer to this SO
+question](http://stackoverflow.com/questions/5309379/how-to-keep-maven-profiles-which-are-activebydefault-active-even-if-another-prof). 
+Following those instructions, your settings file would look something like this:
+
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    ...
+    <profiles>
+        ...
+        <profile>
+            <id>default_profile</id>
+            <activation>
+                <property>
+                    <name>!not_default_profile</name>
+                </property>
+            </activation>
+            <properties>
+                <my-app.shiro.google.client.id>a78_CLIENT_ID_HERE_yoT.apps.googleusercontent.com</my-app.shiro.google.client.id>
+                <my-app.shiro.google.client.secret>V7H_CLIENT_SECRET_HERE_t4P</my-app.shiro.google.client.secret>
+                <my-app.shiro.google.redirectUri.remote>https://my-app.appspot.com/callback</my-app.shiro.google.redirectUri.remote>
+            </properties>
+        </profile>
+        ...
+    </profiles>
+    ...
+    </settings>
+
+
+Development builds will use 
+http://localhost:8080/my-app/callback as the callback 
 URL, and builds where the `remote-deployable` profile is activated will use
 the value of `${my-app.shiro.google.remoteRedirectUri}` defined in your user
 settings.
