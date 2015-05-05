@@ -52,6 +52,10 @@ public class GoogleAppsDomainClient extends Google2Client {
         return new GoogleAppsDomainApi20();
     }
 
+    /**
+     * Gets the apps domain that has been set, or null if none has been set.
+     * @return the apps domain; may be null
+     */
     public String getDomain() {
         return domain;
     }
@@ -60,4 +64,38 @@ public class GoogleAppsDomainClient extends Google2Client {
         this.domain = domain;
     }
     
+    public String getScopeName() {
+        Google2Scope scope_ = super.getScope();
+        if (scope_ == null) {
+            return null;
+        }
+        return scope_.name();
+    }
+    
+    /**
+     * Sets the scope as specified by a given scope name. The scope name must
+     * be a case-insensitive match for one of the {@code Google2Scope}
+     * enum constants.
+     * @param scopeName the scope name
+     * @throws IllegalArgumentException if the scope name does not match a 
+     * constant (exception would be thrown by 
+     * {@link Enum#valueOf(java.lang.Class, java.lang.String) })
+     */
+    public void setScopeName(String scopeName) throws IllegalArgumentException {
+        Google2Scope scope_;
+        if (scopeName == null) {
+            scope_ = null;
+        } else {
+            String normalizedScopeName = normalizeScopeName(scopeName);
+            scope_ = Google2Scope.valueOf(normalizedScopeName);
+        }
+        setScope(scope_);
+    }
+    
+    protected String normalizeScopeName(String scopeName) {
+        if (scopeName == null) {
+            return null;
+        }
+        return scopeName.toUpperCase();
+    }
 }
